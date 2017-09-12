@@ -21,36 +21,97 @@ void populatingArray(int *array, int b)
 // Printing A Heap-Allocated Integer Array
 void intArray(int *a, int b)
 {
-	for (b; b < 6; ++b)
+	for (b; b < 5; ++b)
 	{
-		int a[b] = {3, 5, 7, 9, 11};
+		int a[] = {3, 5, 7, 9, 11};
 
 		cout << a[b] << endl;
 	}
 }
 
 
-
-int main()
+int numInput()
 {
-	intArray(0, 0);
-
-	// Heap-Allocated Array of NUmbers
+	// Heap-Allocated Array of Numbers
 	int qty = 0;
+	int even = 0;
+	int odd = qty - even;
+
 	cout << "Howdy! How many numbers would you like to provide? ";
 	cin >> qty;
 
-	for(int i =0; i < qty; ++i)
+	int *inputs = new int[qty];
+
+	for (int i = 0; i < qty; ++i)
 	{
-		cout << "Okay, what's number 1? ";
-		int *inputs = new int[qty];
+		cout << "Okay, what's number " << i + 1 << "?" << endl;
+		int input = -1;
+		cin >> input;
+
+		if (input % 2 == 0)
+		{
+			even++;
+		}
 	}
 
+	if(even > odd) 
+	{
+		cout << "Wow you like even numbers a lot." << endl; 
+	}
+	else
+	{
+		cout << "Wow you like odd numbers a lot." << endl; 
+	}
+
+	return 0;
+}
+
+// Adding Up To 21
+int addition()
+{
+	int qty = 0;
+
+	cout << "Howdy! Let's try gathering up some numbers that you can use to add up to 21." << endl;
+
+	cout << "How many numbers do you think you'll need. ";
+	cin >> qty;
+	int sum = 0;
+	int *inputs = new int[qty];
+
+	for(int i = 0; i < qty; ++i)
+	{
+		cout << "Okay, what's number " << i + 1 << "?" << endl;
+		int input = -1;
+		cin >> input;
+		sum += input;
+	}
+
+	if (sum == 21)
+	{
+		cout << "Wow, that adds up to 21! You sure can count." << endl;
+	}
+
+	else
+	{
+		cout << "I think you need to redo your math." << endl;
+	}
+
+	return 0;
+}
+
+int main()
+{
+	addition();
 
 
 
 
-	int * multiple = new int[100];
+	//intArray(0, 0);
+
+	//numInput();
+
+
+	/* int * multiple = new int[100];
 	populatingArray(multiple, 0);
 
 	// A Heap-Allocated Integer Array
@@ -104,7 +165,7 @@ int main()
 	delete[] intNums;
 	delete[] floatNums;
 	delete[] aBools;
-
+	*/
 	system("pause");
 
 	return 0;
