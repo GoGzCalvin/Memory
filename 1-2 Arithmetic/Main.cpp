@@ -2,6 +2,48 @@
 
 using namespace std;
 
+// Find Count
+int findCount(int target, int *array, int size)
+{
+	int freq = 0;
+
+	for (int i = 0; i < size, ++i)
+	{
+		if (*(array + i) == target) {freq++;}
+	}
+
+	return freq;
+}
+
+//Array Copy
+void arrayCopy(int *srcArr, int srcSize, int *dstArr, int dstSize)
+{
+	for (int i = 0; i < srcSize; ++i)
+	{
+		*(dstArr + i) = *(srcArr + i);
+	}
+}
+
+// Array Reversal
+void cstrReversal(int *arr, int size)
+{
+	for (int i = 0; i < size / 2; ++i)
+	{
+		char temp = *(arr + i);
+
+		//swap
+		*(arr + i) = *(arr + size - 1 - i);
+		*(arr + size - 1 - i) = temp;
+	}
+}
+
+
+// String Reversal
+void cstrReversal(char * arr, int size)
+{
+
+}
+
 
 void printFloats(float *array, int size)
 {
