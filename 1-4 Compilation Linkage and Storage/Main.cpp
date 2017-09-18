@@ -1,8 +1,13 @@
 #include <iostream>
+#include "globals.h"
+#include <cassert>
+
 
 using namespace std;
 static int counter = 0;
 
+
+// ReleaseHalfLove
 void releaseHalfLove()
 {
 	
@@ -11,22 +16,10 @@ void releaseHalfLove()
 
 	
 	counter = ++counter % 2 ;
-
-	// counter == even = 1
-	// counter == odd = 2
-
-
-	/*for (int i = 0; i < counter; i++)
-	{
-	
-	}
-
-	if (counter < 3)
-	{
-		cout << "The game, Half-Love " << ", was released!" << endl;
-	}*/
 }
 
+
+// StepFizzBuzz
 void stepFizzBuzz()
 {
 	for (int i = 0; i <= 16; ++i)
@@ -54,6 +47,91 @@ void stepFizzBuzz()
 		}
 	}
 }
+
+
+// Divide
+float divide(float lhs, float rhs)
+{
+	assert(rhs != 0.0f && "Division by zero detected!");
+
+	return lhs / rhs;
+}
+
+
+// Call Me Maybe
+void callMeMaybe()
+{
+	static int counter = 0;
+
+	if (counter == 0)
+	{
+		cout << "Howdy!" << endl;
+	}
+	else if (counter == 1)
+	{
+		cout << "I'm a savage!" << endl;
+	}
+	else if (counter == 2)
+	{
+		cout << "WOW" << endl;
+	}
+	else if (counter == 3)
+	{
+		cout << "Hello?" << endl;
+	}
+
+
+	counter = ++counter % 4;
+}
+
+int& picker(int& optA, int& optB, int& optC)
+{
+	static int counter = 0;
+
+	switch (counter++ % 3)
+	{
+	case 0:
+		return optA;
+	case 1:
+		return optB;
+	case 2:
+		return optC;
+	default:
+		return optA;
+	}
+}
+
+void diffArrays(int * arrA, size_t arrASize,
+	int * arrB, size_t arrBSize)
+{
+	assert(arrBSize <= arrASize);
+
+	for (int i = 0; i < arrBSize; ++i)
+	{
+		arrA[i] -= arrB[i];
+	}
+}
+
+void arrayCopy(int * srcArr, size_t srcSize,
+	int * dstArr, size_t dstSize)
+{
+	assert(dstSize >= srcSize);
+}
+
+void gridGen(int width, int height)
+{
+	assert(width > -1 &&
+		height > -1);
+}
+
+void counterValue()
+{
+	static int ct = 0;
+	ct++;
+
+	cout << ct << endl;
+}
+
 int main()
 {
 	stepFizzBuzz();
@@ -63,6 +141,59 @@ int main()
 	{
 		releaseHalfLove();
 		cout << counter << endl;
+	}
+
+
+	cout << counter << endl;
+	increment();
+	cout << counter << endl;
+	decrement();
+	cout << counter << endl;
+	increment();
+	cout << counter << endl;
+
+	cout << divide(5.0f, 1.0f) << endl;
+
+	// Global Variables
+	cout << globalChange << endl;
+	changeOne();
+	cout << globalChange << endl;
+	changeTwo();
+	cout << globalChange << endl;
+
+	for (int i = 0; i < 4; ++i)
+	{
+		callMeMaybe();
+	}
+
+
+	int a = 2;
+	int b = 4;
+	int c = 6;
+
+	cout << picker(a, b, c) << endl;
+	cout << picker(a, b, c) << endl;
+	cout << picker(a, b, c) << endl;
+	cout << picker(a, b, c) << endl;
+	cout << picker(a, b, c) << endl;
+	cout << picker(a, b, c) << endl;
+
+
+	// Preprocessor Directives
+	int numA[] = { 3, 2, 1 };
+	int numB[] = { 3, 2, 1, 10, 12 };
+
+	//diffArrays(numA, 3, numB, 5);
+
+	for (int i = 0; i < 3; ++i)
+	{
+		cout << numA[i] << endl;
+	}
+
+	// Static Local Variables
+	for (int i = 0; i < 50; ++i)
+	{
+		counterValue();
 	}
 
 	system("pause");
